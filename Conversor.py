@@ -13,8 +13,8 @@ def conversor_moedas():
         cotacao_dolar = float(dados["USDBRL"]["bid"])
         resultado = wallet * cotacao_dolar
         
-        print(f"Cotação: R$ {cotacao_dolar:.2f}")
-        print(f"Total na carteira em reais: R$ {resultado:.2f}")
+        print("Cotação: R$ {:.2f}".format(cotacao_dolar))
+        print("Total na carteira em reais: R$ {:.2f}".format(resultado))
 
     except ValueError:
         print("Erro: Por favor, digite apenas números.")
