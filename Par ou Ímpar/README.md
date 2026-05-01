@@ -4,7 +4,6 @@ Este é um projeto simples de console desenvolvido em Python para praticar conce
 
 ## - Funcionalidades
 
-- Escolha entre Par ou Ímpar.
 - Disputa contra o computador (que gera números aleatórios).
 - Validação básica de entrada.
 - Contador de vitórias consecutivas (o jogo para quando você perde).
