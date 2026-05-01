@@ -1,5 +1,13 @@
 from random import randint
 
+def validador(variavel, arg1, arg2):
+    
+    if variavel in[arg1, arg2]:
+        return True
+    
+    print("Escolha Invalida")
+    return False
+ 
 def jogo(jogada):
     
     n_user = int(input('Digite um numero de 0 a 5: '))
@@ -30,6 +38,15 @@ while True:
     
     if venceu:
         vitorias += 1
+        
+        while True:
+            escolha = str(input("Quer continuar jogando? [S/N]")).upper()[0]
+            if validador(escolha, "S", "N")
+                break
+                
+        if escolha == "N":
+            print(f"Finalizado, vitorias totais {vitorias}")
+            break   
         
     else:
         print(f"voce conseguiu {vitorias} vitorias consegutivas")
