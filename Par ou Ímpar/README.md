@@ -2,7 +2,7 @@
 
 Este é um projeto simples de console desenvolvido em Python para praticar conceitos de lógica de programação, estruturas de repetição (`while True`) e funções.
 
-##  Funcionalidades
+## ✨ Funcionalidades
 
 - Escolha entre Par ou Ímpar.
 - Disputa contra o computador (que gera números aleatórios).
