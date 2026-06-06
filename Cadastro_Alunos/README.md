@@ -2,6 +2,7 @@
 Sistema desenvolvido em Python para cadastrar, consultar e excluir alunos e suas notas de forma dinâmica.
 
 ## Fluxo de Dados Básico
+<pre>
 Usuário escolhe uma opção no menu
         │
         ├── [1] Cadastrar
@@ -22,6 +23,7 @@ Usuário escolhe uma opção no menu
         │       └── Remove o aluno do sistema
         │
         └── [4] Sair
+</pre>
 
 ## Conceitos Utilizados
 
