@@ -162,39 +162,3 @@ def main(caminho):
         # Salva
         salvar()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## erro  produto e prateleira tbm adicionar
-
-
-##' 
-# def escrever(xpath, texto):
-
-#   campo = wait.until(
-#        EC.element_to_be_clickable((By.XPATH, xpath))
- #   )
-
-#    campo.click()
-#    campo.clear()
- #   campo.send_keys(texto)
-
-# da pra fazer essa funcao pra adiciona mais rapido nas funcoes de escrever
-# exemplo de input pra ela 
-
-# escrever('//*[@id="W0032W0081E18CODPRO"]', codigo)
