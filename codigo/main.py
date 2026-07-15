@@ -14,6 +14,7 @@ def ler_arquivo(caminho):
     produtos = []
     if not os.path.exists(caminho):
         return[]
+        
     try:
         with open(caminho, 'r', encoding='utf-8') as f:
             linhas = f.readlines()
@@ -116,7 +117,7 @@ def main(caminho):
     wait = WebDriverWait(driver, 10)
     print("Conectado com sucesso!") 
     
-    
+    # chama a funcao pra ler o que foi passado pelo arquivo interface
     produtos = ler_arquivo(caminho)
     for item in produtos:
         # Extraindo os dados do dicionário
@@ -140,6 +141,7 @@ def main(caminho):
         
         # Verifica o nome
         nome_site = ler_nome()
+        
         if nome_site.upper() not in nome.upper():
             salvar_log(codigo, prateleira, f"{nome_site} (esperado: {nome})", 'NOME', "Nome divergente")
             fechar()
