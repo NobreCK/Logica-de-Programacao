@@ -10,12 +10,6 @@ from selenium.webdriver.common.keys import Keys
 driver = None
 wait = None
 
-def obter_caminho_arquivo(nome_arquivo):
-    if getattr(sys, 'frozen', False):
-        return os.path.join(os.path.dirname(sys.executable), nome_arquivo)
-    return os.path.join(os.path.dirname(__file__), nome_arquivo)
-
-
 def ler_arquivo(caminho):
     produtos = []
     if not os.path.exists(caminho):
@@ -43,33 +37,6 @@ def ler_arquivo(caminho):
     
     return produtos
 # produtos = [(codigo, prateleira, nome), (codigo, prateleira, nome)] 
-
-
-##
-def preencher_produto(codigo): ## recebe o codigo
-    campo = wait.until(
-        EC.presence_of_element_located(
-            (By.XPATH, '//*[@id="W0032W0081E18CODPRO"]')
-        )
-    )
-    campo.click()
-    campo.clear()
-    campo.send_keys(codigo)
-    campo.send_keys(Keys.TAB)
-
-
-
-def preencher_prateleira(prateleira):
-    campo = wait.until(
-        EC.presence_of_element_located(
-            (By.XPATH, '//*[@id="W0032W0081E70PRATEL"]')
-        )
-    ) 
-    campo.click()
-    campo.clear()
-    campo.send_keys(prateleira)
-    campo.send_keys(Keys.TAB)
-##
 
 
 def ler_nome():
