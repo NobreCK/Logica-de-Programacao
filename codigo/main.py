@@ -105,8 +105,8 @@ def salvar_log(codigo, prateleira, nome, tipo_erro, mensagem):
         f.write('-' * 60 + '\n')
 
 
-def main(caminho):
-    global produtos, driver, wait
+def main(caminho, tempo):
+    global driver, wait
 
     print("Conectando ao Chrome...")
     options = webdriver.ChromeOptions()
@@ -118,7 +118,7 @@ def main(caminho):
     print("Conectado com sucesso!") 
     
     # chama a funcao pra ler o que foi passado pelo arquivo interface
-    produtos = ler_arquivo(caminho)
+    produtos = ler_arquivo(caminho, tempo)
     for item in produtos:
         # Extraindo os dados do dicionário
         codigo = item['codigo']
@@ -126,11 +126,11 @@ def main(caminho):
         nome = item['nome']
         
         clicar_mais()
-        time.sleep(2)
+        time.sleep(tempo)
 
         # Usando sua nova função de escrever
         escrever('//*[@id="W0032W0081E18CODPRO"]', codigo)
-        time.sleep(2)
+        time.sleep(tempo)
 
         # Verifica erros do produto
         erro = erro_produto()
@@ -147,7 +147,7 @@ def main(caminho):
             fechar()
             continue
         
-        time.sleep(2)
+        time.sleep(tempo)
     
         # Usando a nova função para a prateleira
         escrever('//*[@id="W0032W0081E70PRATEL"]', prateleira)
@@ -159,7 +159,7 @@ def main(caminho):
             fechar()
             continue
         
-        time.sleep(2)
+        time.sleep(tempo)
     
         # Salva
         salvar()
