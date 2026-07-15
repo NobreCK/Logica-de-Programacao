@@ -20,11 +20,23 @@ def selecionar_arquivo():
         lbl_arquivo.config(text=f"Arquivo selecionado: {caminho_arquivo}")  
 
 def rodar():
+    global numero
     if not caminho_arquivo:
         messagebox.showerror("Erro", "Selecione um arquivo antes de rodar.")
         return
+    #
+    conteudo = entrada.get()
+    if conteudo:
+        try:
+            numero = float(conteudo)
+        except ValueError:
+            messagebox.showerror("Erro", "Por favor, digite um número válido na entrada.")
+            return
+    else:
+        numero = 2.0
+    #
     
-    thread_robo = threading.Thread(target=main, args=(caminho_arquivo,))
+    thread_robo = threading.Thread(target=main, args=(caminho_arquivo, numero))
     thread_robo.start()
     
 def abrir_log():
@@ -33,10 +45,10 @@ def abrir_log():
     except FileNotFoundError:
         messagebox.showerror('Aviso', 'Arquivo de log não encontrado.')
 
-janela = tk.Tk()
-janela.geometry("400x200")
-janela.title("Alocacao de produtos")
 
+janela = tk.Tk()
+janela.geometry("500x500")
+janela.title("Alocacao de produtos")
 
 titulo = tk.Label(janela, text="Alocacao de produtos", font=("Arial", 16, "bold"))
 titulo.pack(pady=10)
@@ -52,6 +64,9 @@ btn_iniciar.pack(pady=15)
 
 btn_log = tk.Button(janela, text="📄 Abrir Log de Erros", command=abrir_log)
 btn_log.pack(pady=5)
-
+#
+entrada = tk.Entry(janela)
+entrada.pack(pady=10)
+#
 janela.mainloop()
         
