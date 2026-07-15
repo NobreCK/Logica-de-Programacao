@@ -47,7 +47,7 @@ def abrir_log():
 
 
 janela = tk.Tk()
-janela.geometry("500x500")
+janela.geometry("400x330")
 janela.title("Alocacao de produtos")
 
 titulo = tk.Label(janela, text="Alocacao de produtos", font=("Arial", 16, "bold"))
@@ -64,6 +64,9 @@ btn_iniciar.pack(pady=15)
 
 btn_log = tk.Button(janela, text="📄 Abrir Log de Erros", command=abrir_log)
 btn_log.pack(pady=5)
+
+lbl = tk.Label(janela, text='Tempo de execucao de cada acao:')
+lbl.pack(pady=5)
 #
 entrada = tk.Entry(janela)
 entrada.pack(pady=10)
