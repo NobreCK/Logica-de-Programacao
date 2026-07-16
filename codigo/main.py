@@ -93,6 +93,7 @@ def fechar():
 
 def escrever(xpath, texto):
     campo = wait.until(EC.element_to_be_clickable((By.XPATH, xpath)))
+    time.sleep(1)
     campo.click()
     campo.clear()
     campo.send_keys(texto)
@@ -118,7 +119,7 @@ def main(caminho, tempo):
     print("Conectado com sucesso!") 
     
     # chama a funcao pra ler o que foi passado pelo arquivo interface
-    produtos = ler_arquivo(caminho, tempo)
+    produtos = ler_arquivo(caminho)
     for item in produtos:
         # Extraindo os dados do dicionário
         codigo = item['codigo']
@@ -141,11 +142,17 @@ def main(caminho, tempo):
         
         # Verifica o nome
         nome_site = ler_nome()
-        
-        if nome_site.upper() not in nome.upper():
-            salvar_log(codigo, prateleira, f"{nome_site} (esperado: {nome})", 'NOME', "Nome divergente")
-            fechar()
-            continue
+        if nome.strip().upper() not in nome_site.strip().upper():
+
+            salvar_log(
+                codigo,
+                prateleira,
+                nome,
+                "NOME",
+                f"Esperado: '{nome}' | Encontrado: '{nome_site}'"
+            )
+
+# continua normalmente
         
         time.sleep(tempo)
     
