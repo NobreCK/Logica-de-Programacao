@@ -66,11 +66,51 @@ void carregarmenus();
 void clima();
 void ia();
 void rf();
+void iniciarTopo();
+void desenharInterfaceCarrossel();
+void printCentro(const char* texto, int y, int tamanho, bool altura, bool sublinhar);
+void desenharIconeComEscala(int16_t x, int16_t y, const unsigned char *bitmap, int16_t w, int16_t h, uint16_t col, uint8_t escala);
 void limparEsquerdaParaDireita(uint16_t corDeFundo);
+void limparDireitaparaEsquerda(uint16_t corDeFundo);
+
+void setup() {
+    pinMode(btnUp, INPUT_PULLUP);
+    pinMode(btnSelect, INPUT_PULLUP);
+    pinMode(btnDown, INPUT_PULLUP);
+
+    tft.initR(INITR_BLACKTAB); 
+    tft.setRotation(1); 
+    tft.setTextSize(1); 
+    
+    tft.fillScreen(ST7735_BLACK); 
+    
+    iniciarTopo();
+    desenharInterfaceCarrossel();
+}
+
+void loop() {
     if (digitalRead(btnUp) == LOW) {
         itemselecionado--;
+        if (itemselecionado < 0) {
+            itemselecionado = totalitens - 1; 
+        }
         
+        if (estadoatual == PRINCIPAL) {
+            limparDireitaparaEsquerda(ST7735_BLACK); 
+            desenharInterfaceCarrossel();
+        } else {
+            carregarmenus();
+        }
+        
+        delay(50);
+        while (digitalRead(btnUp) == LOW);
+    }
+
+    if (digitalRead(btnDown) == LOW) {
         itemselecionado++;
+        if (itemselecionado >= totalitens) {
+            itemselecionado = 0; 
+        }
 
         if (estadoatual == PRINCIPAL) {
             limparEsquerdaParaDireita(ST7735_BLACK); 
@@ -113,8 +153,41 @@ void limparEsquerdaParaDireita(uint16_t corDeFundo);
 }
 
 void iniciarTopo() {
+    tft.fillRect(6, 6, tft.width() - 12, 10, 0x0115); 
+    tft.setTextColor(ST7735_WHITE);
+    printCentro("NOBRE", 7, 1, false, false);
+
+    int ySetaCentro = tft.height() / 2 - 4; 
+    int xSetaDireita = tft.width() - 18;      
+
+    tft.setTextColor(ST7735_BLUE);
+    tft.setCursor(12, ySetaCentro);           tft.print("<");
+    tft.setCursor(xSetaDireita, ySetaCentro); tft.print(">");
+
+    tft.drawRect(5, 5, tft.width() - 10, tft.height() - 10, ST7735_BLUE);
 }
+
+void desenharInterfaceCarrossel() {
+    int xBaseCentro = (tft.width() / 2) - 32 + AJUSTE_CENTRO;  
     int yBaseCentro = (tft.height() / 2) - 32;      
+    int y = 106;
+
+    tft.setTextColor(ST7735_WHITE);
+
+    switch (itemselecionado) {
+        case 0:
+            desenharIconeComEscala(xBaseCentro, yBaseCentro, icone_antena_32x32, 32, 32, ST7735_CYAN, 2);
+            printCentro("INFRAVERMELHO", y, 1, false, false); 
+            break;
+
+        case 1:
+            desenharIconeComEscala(xBaseCentro, yBaseCentro + 10, icone_wifi_32x32, 32, 32, ST7735_CYAN, 2);
+            printCentro("WIFI", y, 1, false, false);
+            break;
+
+        case 2:
+            desenharIconeComEscala(xBaseCentro + 1, yBaseCentro + 6, icone_clima_32x32, 32, 32, ST7735_CYAN, 2);
+            printCentro("CLIMA", y, 1, false, false);
             break;
 
         case 3:
@@ -124,6 +197,9 @@ void iniciarTopo() {
 
         case 4:
             desenharIconeComEscala(xBaseCentro + 1, yBaseCentro + 8, icone_rf_32x32, 32, 32, ST7735_CYAN, 2);
+            printCentro("RF", y, 1, false, false);
+            break;
+    }
 }
 // printando tambem alem de centralizar, precisamos ainda de valor y
 // 1. Tiramos os "returns" proibidos e deixamos a função desenhar e calcular normal
@@ -248,79 +324,3 @@ void rf() {
     tft.setTextColor(ST7735_WHITE);
     tft.print("Clima"); // ✅
 }
-            printCentro("RF", y, 1, false, false);
-            break;
-    }
-    int y = 106;
-
-    tft.setTextColor(ST7735_WHITE);
-            desenharIconeComEscala(xBaseCentro, yBaseCentro, icone_antena_32x32, 32, 32, ST7735_CYAN, 2);
-            desenharIconeComEscala(xBaseCentro + 1, yBaseCentro + 6, icone_clima_32x32, 32, 32, ST7735_CYAN, 2);
-            printCentro("CLIMA", y, 1, false, false);
-        case 1:
-
-        case 2:
-            desenharIconeComEscala(xBaseCentro, yBaseCentro + 10, icone_wifi_32x32, 32, 32, ST7735_CYAN, 2);
-            printCentro("WIFI", y, 1, false, false);
-            break;
-            printCentro("INFRAVERMELHO", y, 1, false, false); 
-            break;
-
-
-    switch (itemselecionado) {
-        case 0:
-
-void desenharInterfaceCarrossel() {
-    int xBaseCentro = (tft.width() / 2) - 32 + AJUSTE_CENTRO;  
-    tft.fillRect(6, 6, tft.width() - 12, 10, 0x0115); 
-    tft.setTextColor(ST7735_WHITE);
-    printCentro("NOBRE", 7, 1, false, false);
-    tft.setCursor(xSetaDireita, ySetaCentro); tft.print(">");
-
-    tft.drawRect(5, 5, tft.width() - 10, tft.height() - 10, ST7735_BLUE);
-
-    int ySetaCentro = tft.height() / 2 - 4; 
-    int xSetaDireita = tft.width() - 18;      
-
-    tft.setTextColor(ST7735_BLUE);
-    tft.setCursor(12, ySetaCentro);           tft.print("<");
-        if (itemselecionado >= totalitens) {
-            itemselecionado = 0; 
-        }
-    }
-
-    if (digitalRead(btnDown) == LOW) {
-        if (estadoatual == PRINCIPAL) {
-            carregarmenus();
-        }
-        
-        delay(50);
-        while (digitalRead(btnUp) == LOW);
-            limparDireitaparaEsquerda(ST7735_BLACK); 
-            desenharInterfaceCarrossel();
-        } else {
-        if (itemselecionado < 0) {
-            itemselecionado = totalitens - 1; 
-        }
-void limparDireitaparaEsquerda(uint16_t corDeFundo);
-
-void loop() {
-
-void setup() {
-    pinMode(btnUp, INPUT_PULLUP);
-    pinMode(btnSelect, INPUT_PULLUP);
-    tft.setRotation(1); 
-    tft.setTextSize(1); 
-    
-    tft.fillScreen(ST7735_BLACK); 
-    
-    iniciarTopo();
-    desenharInterfaceCarrossel();
-}
-    pinMode(btnDown, INPUT_PULLUP);
-
-    tft.initR(INITR_BLACKTAB); 
-void iniciarTopo();
-void printCentro(const char* texto, int y, int tamanho, bool altura, bool sublinhar);
-void desenharIconeComEscala(int16_t x, int16_t y, const unsigned char *bitmap, int16_t w, int16_t h, uint16_t col, uint8_t escala);
-
