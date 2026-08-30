@@ -1,0 +1,15 @@
+uma ia local com cadastro de rostos de pessoas, ele reage as pessoas que foi cadastrado feliz e usar um sistema de vibracao como se fosse um gato e as que ele 
+nao conhece ele fica com cara de curioso 
+podemos cadastrar tambem alguns itens para ele ficar interessado para coisas novas e espantado com coisas que cadastramos tipo uma aranha de brinquedo para ficar espantado
+raiva triste sla, vai ter um sensor infravermelho pra detecta as bordas da mesa que vao ser demarcadas com fita tinta canetinha naosei, vai ter tambem uma ia
+do gemini ou chatgpt integrado nele para ele responder perguntas dificeis que o publico queira perguntar dai ele faz uma cara de pensando enquanto ta processando e feliz falando
+no celular vai ter um botao de entrar no modo ia para escutar porq se nao ele poderia enviar o audio dos ruidos da feira, e tambem fazer ele dar um 180 pra entrar no modo ia quando clickado 
+modo andar aleatorio e modo parar para ele escutar ou qnd a gente quiser botar ele em outro lugar antes de escutar
+a detectao de objetos e rostos vai ser desligada apenas no modo ia e ligada no modo andar aleatorio novamente ou parar
+
+
+precisamos cadastrar os rostos nossos 
+ter uma foto de mesas com cadeiras 
+
+1. O Truque da "Classe de Fundo" (Background Noise)Quando você for treinar o seu modelo de objetos e rostos no Edge Impulse, você não vai tirar fotos apenas do robô na sua casa.O que fazer no dia: Assim que você chegar na feira e montar a sua mesa, tire cerca de 50 a 100 fotos com a câmera do próprio robô apontada para o cenário da feira (as pessoas passando ao fundo, as luzes do local, o teto, a própria mesa).Como treinar: No Edge Impulse, coloque todas essas fotos em uma categoria chamada fundo ou ambiente.O resultado: Você estará ensinando para a IA o seguinte: "Tudo o que estiver nessa foto agora é considerado NADA, ignore". O robô só vai reagir se um rosto ou objeto chegar muito perto da câmera, cobrindo o fundo da feira.2. Filtro por Distância de Segurança (Gating)Se o robô tentar analisar pessoas que estão a 3 metros de distância, ele vai errar muito por causa da resolução da câmera.A Solução de Código: No código do seu ESP32, quando a IA local processar a imagem, ela te dá o tamanho (largura e altura) do quadrado do objeto detectado.A Lógica: Você programa o robô para só reagir se o quadrado do rosto ou do objeto for grande. Se for um quadrado pequeno (o que significa que a pessoa está longe, lá no fundo da feira), o seu código simplesmente ignora e diz: objeto_detectado = "fundo". Ele só vai fazer a carinha de curioso ou feliz se a pessoa se aproximar e colocar o rosto ou o brinquedo bem perto do robô.
+no dia precisa ter o treinamento do robo com 50 100 fotos com a camera dele, 5 a 10 minutos para processar tudo
