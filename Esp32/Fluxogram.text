@@ -13,3 +13,44 @@ ter uma foto de mesas com cadeiras
 
 1. O Truque da "Classe de Fundo" (Background Noise)Quando você for treinar o seu modelo de objetos e rostos no Edge Impulse, você não vai tirar fotos apenas do robô na sua casa.O que fazer no dia: Assim que você chegar na feira e montar a sua mesa, tire cerca de 50 a 100 fotos com a câmera do próprio robô apontada para o cenário da feira (as pessoas passando ao fundo, as luzes do local, o teto, a própria mesa).Como treinar: No Edge Impulse, coloque todas essas fotos em uma categoria chamada fundo ou ambiente.O resultado: Você estará ensinando para a IA o seguinte: "Tudo o que estiver nessa foto agora é considerado NADA, ignore". O robô só vai reagir se um rosto ou objeto chegar muito perto da câmera, cobrindo o fundo da feira.2. Filtro por Distância de Segurança (Gating)Se o robô tentar analisar pessoas que estão a 3 metros de distância, ele vai errar muito por causa da resolução da câmera.A Solução de Código: No código do seu ESP32, quando a IA local processar a imagem, ela te dá o tamanho (largura e altura) do quadrado do objeto detectado.A Lógica: Você programa o robô para só reagir se o quadrado do rosto ou do objeto for grande. Se for um quadrado pequeno (o que significa que a pessoa está longe, lá no fundo da feira), o seu código simplesmente ignora e diz: objeto_detectado = "fundo". Ele só vai fazer a carinha de curioso ou feliz se a pessoa se aproximar e colocar o rosto ou o brinquedo bem perto do robô.
 no dia precisa ter o treinamento do robo com 50 100 fotos com a camera dele, 5 a 10 minutos para processar tudo
+
+Modo Andar Aleatório / Parar:
+→ Câmera ligada + FOMO rodando
+→ Detectou rosto conhecido → cara feliz + vibração
+→ Detectou pessoa desconhecida → cara de curioso
+→ Detectou item cadastrado → reação específica (espanto, interesse, etc.)
+→ Sensor IR detectou borda → desvia
+
+Modo IA (botão no celular):
+→ Desliga detecção de rostos/objetos
+→ Gira 180°
+→ Liga microfone
+→ Envia áudio para Gemini/ChatGPT via WiFi
+→ Mostra cara de “pensando”
+→ Fala a resposta + cara feliz
+
+comunicacao vai ser: 
+COMANDOS POR WEB EM HTML SIMPLES HOSPEDADO NO ESP E ENVIAR O SINAL POR WIFI (USANDO 4g e com acess point pro esp
+AUDIO E MIC DO CELULAR E A API NO ESP32
+
+Plano realista (versão que funciona + impressiona)
+Vamos dividir em fases. Cada fase você consegue fazer nas suas tardes livres.
+Semana 1 – Base do robô (mais importante)
+
+Dia 1: Estrutura de modos (Andar / Parar / Expressões)
+Dia 2: Sensor infravermelho de borda da mesa + lógica de desvio
+Dia 3: Andar aleatório funcionando + parar quando quiser
+
+Semana 2 – Personalidade do robô
+
+Dia 1: Sistema de expressões no display (feliz, curioso, pensando, espantado, triste...)
+Dia 2: Vibração (estilo gato) ligada às emoções
+Dia 3: Juntar tudo (andar + reagir com cara e vibração)
+
+Semana 3 – Detecção (se der tempo)
+
+Começar Edge Impulse (cadastrar rostos de vocês + alguns objetos)
+Fazer ele reagir quando ver rosto conhecido ou item específico
+Só se as semanas 1 e 2 estiverem estáveis
+
+A parte de Modo IA + página web + API a gente deixa como “extra” se sobrar tempo no final. Não é prioridade agora.
