@@ -83,7 +83,7 @@ const char* htmlPage = R"rawliteral(
   <div id="status">Aguardando...</div>
 
   <script>
-    const GEMINI_API_KEY = "AQ.Ab8RN6I2VDXKNwZs81smt4XITmkBQFTy7GR-Lve38GbccCK8qg";
+    const GEMINI_API_KEY = "COLE A API";
     const MODELO = "gemini-2.0-flash";
 
     function entrarModoIA() {
