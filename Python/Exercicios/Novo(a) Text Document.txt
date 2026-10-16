@@ -1,0 +1,63 @@
+    # 🐍 Trilha de Projetos Python: Transição Iniciante -> Intermediário
+
+    Este repositório contém o roteiro prático de estudos e projetos voltados para a consolidação dos fundamentos de programação em Python, cobrindo manipulação de estruturas de dados, leitura/escrita de arquivos e orientação a objetos básica.
+
+    ---
+
+    ## 🎯 Objetivos de Aprendizado
+
+    - Dominar estruturas de dados nativas (`list`, `dict`, `tuple`, `set`).
+    - Organizar código utilizando funções reutilizáveis e módulos.
+    - Manipular arquivos locais (`.txt` e `.json`) para persistência de dados simples.
+    - Tratar exceções e erros de execução (`try/except`).
+    - Aplicar Orientação a Objetos (POO) básica: Classes, Atributos, Métodos e Herança.
+
+    ---
+
+    ## 🚀 Projetos Recomendados
+
+    ### 1. Jogo da Forca (Terminal)
+    - **Foco:** Controle de fluxo, manipulação de strings e geração aleatória.
+    - **Descrição:** O jogo carrega palavras de um arquivo `.txt`, sorteia uma e gerencia o número de tentativas do usuário mostrando o progresso visual no terminal.
+    - **Conceitos:** `while`, `for`, `random`, `open()`, métodos de string.
+
+    ### 2. Analisador de Texto / Leitor de Logs
+    - **Foco:** Processamento de dados de texto e contagem.
+    - **Descrição:** Script que lê um arquivo de texto longo ou log e gera relatórios com total de palavras, termos mais frequentes e busca por padrões.
+    - **Conceitos:** `with open()`, `split()`, `strip()`, `collections.Counter`.
+
+    ### 3. Gerenciador de Contatos / Tarefas
+    - **Foco:** Operações CRUD básicas e persistência leve.
+    - **Descrição:** Sistema via terminal com menu interativo para cadastrar, listar, buscar e deletar registros, salvando o estado em um arquivo JSON.
+    - **Conceitos:** `dict`, `json.dump()`, `json.load()`, funções modularizadas.
+
+    ### 4. Simulador de Conta Bancária
+    - **Foco:** Orientação a Objetos (POO) e validação.
+    - **Descrição:** Modelagem de contas bancárias com suporte a depósito, saque, consulta de saldo e histórico de extrato, impedindo saques sem saldo.
+    - **Conceitos:** `class`, `__init__`, encapsulamento de atributos, `try/except`.
+
+    ### 5. RPG de Texto (Batalha em Turnos)
+    - **Foco:** POO avançada e herança.
+    - **Descrição:** Dois personagens duelam via terminal com mecânica de turnos (Ataque, Cura, Defesa) calculando dano com variabilidade aleatória.
+    - **Conceitos:** Herança de classes, sobrescrita de métodos, gerenciamento de estado de jogo.
+
+    ---
+
+    ## 📊 Matriz de Progressão
+
+    | Projeto | Dificuldade | Principais Módulos/Conceitos |
+    | :--- | :---: | :--- |
+    | **Jogo da Forca** | ⭐☆☆☆☆ | `random`, `pathlib`/`open` |
+    | **Analisador de Texto** | ⭐⭐☆☆☆ | `collections`, manipulação de strings |
+    | **Gerenciador de Contatos** | ⭐⭐☆☆☆ | `json`, funções, CRUD em memória |
+    | **Simulador Bancário** | ⭐⭐⭐☆☆ | Classes, métodos, tratamento de erros |
+    | **RPG de Texto** | ⭐⭐⭐☆☆ | Herança, POO, lógica de jogos |
+
+    ---
+
+    ## 💡 Boas Práticas Durante o Desenvolvimento
+
+    1. **Escreva o código você mesmo:** Evite copiar soluções prontas. Tente quebrar o problema em partes menores.
+    2. **Trate entradas inválidas:** Garanta que o programa não quebre caso o usuário digite um texto onde se esperava um número.
+    3. **Mantenha o código limpo:** Use nomes descritivos para variáveis e funções (padrão `snake_case`).
+    4. **Suba para o GitHub:** Crie um repositório para cada projeto concluído para construir seu portfólio.
